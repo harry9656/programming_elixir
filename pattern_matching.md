@@ -1,4 +1,4 @@
-## Notes
+## Notes: Pattern Matching
 
 Elixir doesn't use assignments. Instead, it uses bindings of values to names.
 The value is bound to a variable name using the `=` operator.

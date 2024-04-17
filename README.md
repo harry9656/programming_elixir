@@ -7,4 +7,5 @@ This repository contains my exercise solutions and Notes from the Book [Programm
 ### Part 1 - Conventional Programming
 - [Chapter 2: Pattern Matching](./pattern_matching.md)
 - [Chapter 3: Immutability](./immutability.md)
-- [Chapter 4: Elixir basics](./elixir_basics.md)
+- [Chapter 4: Elixir Basics](./elixir_basics.md)
+- [Chapter 5: Anonymous Functions](./anonymous_functions.md)

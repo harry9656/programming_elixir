@@ -33,11 +33,51 @@ end
 In case of success, we print the contents of the file. Alternatively, we are printing the error. When using the underscore character `_`, the pattern matching ignores that variable. 
 We can use `#{...}` to format strings nicely. 
 
+Functions can return other functions because they can be treated as data types. Therefore, we can create *closures*:
+
+```elixir
+greeter = fn (greeting) -> 
+    fn (name) -> IO.puts "#{greeting}, #{name}!"
+end
+
+welcome = greeter.("Welcome")
+welcome.("Harry") # Welcome, Harry!
+
+ciao = greeter.("Ciao")
+ciao.("Harry") # Ciao, Harry!
+```
+
+Elixir allows to pass pinned values as function parameters as well. 
+
+For conciseness, we can use the `&` notation to to write functions:
+
+```elixir
+sum = &(&1 + &2)
+```
+
+The `&()` refers to a function whereas `&1` and `&2` refer to the arguments. So, this is equal to:
+
+```elixir
+sum = fn (a, b) -> a + b end
+```
+
+Moreover, Elixir can simplify the anonymous function when it simply wraps a named function:
+
+```elixir
+iex> print = &(IO.puts(&1))
+&IO.puts/1
+```
+It just saves the reference of the `IO.puts/1` function. So we can also shorten the call:
+
+```elixir
+print = &IO.puts/1
+```
+
 
 ## Exercises
 
 ### Functions 1
-Create and run function that do the follwing:
+Create and run a function that do the following:
 ```elixir
 list_concat.([:a, :b], [:c, :d]) # Outputs: [:a, :b, :c, :d]
 sum.(1,2,3) #=> Outputs: 6
@@ -81,4 +121,29 @@ IO.puts fb.(13)
 IO.puts fb.(14)
 IO.puts fb.(15)
 IO.puts fb.(16)
+```
+
+### Functions 4
+Write a function prefix that takes a string. It should return a new function that takes a second string. When that is called, it will return a string containing the first string, a space, and the second string.
+
+Solution:
+
+```elixir
+prefix = fn (prefix) ->
+            fn (name) -> "#{prefix} #{name}"
+            end
+        end
+```
+
+### Functions 5
+
+Use the `&` notation to rewrite the following:
+- `Enum.map [1,2,3,4], fn x -> x + 2 end`
+- `Enum.map [1,2,3,4], fn x -> IO.inspect x end`
+
+Solution:
+
+```elixir
+Enum.map [1,2,3,4], &(&1+2)
+Enum.map [1,2,3,4], &IO.inspect/1
 ```

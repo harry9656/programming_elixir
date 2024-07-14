@@ -149,6 +149,6 @@ Assuming every example running with the same precondition of having `a` bound to
 1. fails for binding once rule
 2. fails for binding once rule
 3. doesn't fail: binds the value of a to 2
-4. doesn't fail: pattern match
-5. fails: `2 = 1` fails to pattern match
-6. fails: `2 = 2 - 2` fails to pattern match 
+4. fails with MatchError: pattern match 1 = 2
+5. doesn't fail: `1 = 1`
+6. doesn't fail: `1 = 2 - 1`

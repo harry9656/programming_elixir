@@ -242,4 +242,4 @@ Erlang module `timer` is the atom `timer` and to use the function `tc` in `timer
 
 ## Finding libraries
 
-The built-in libraries are documented on the official site. Others can be found on (hex.pm)[www.hex.pm].
+The built-in libraries are documented on the official site. Others can be found on (hexdocs.pm)[www.hexdocs.pm].
